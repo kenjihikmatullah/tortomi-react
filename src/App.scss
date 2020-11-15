@@ -1,3 +1,22 @@
+// Colors
+$text-primary: black;
+
+// Breakpoints
+$breakpoint-tablet: 768px;
+
+// Mixins
+@mixin min-md {
+  @media (min-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin max-md {
+  @media (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
 .App {
   text-align: center;
 }
