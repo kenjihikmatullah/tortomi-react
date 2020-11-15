@@ -1,0 +1,44 @@
+@import '../../App.scss';
+
+.app-bar {
+  flex-grow: 1;
+  position: static;
+
+  .toolbar {
+    background-color: white;
+  }
+
+  .title {
+    color: $text-primary;
+    display: none;
+
+    @include min-md {
+      display: flex;
+    }
+  }
+
+  .mobile-section {
+    display: flex;
+
+    @include min-md {
+      display: none;
+    }
+  }
+
+  .desktop-section {
+    display: none;
+
+    @include min-md {
+      display: flex;
+    }
+
+    .menus {
+      orientation: landscape;
+    }
+
+    .menu-text {
+      color: $text-primary;
+      display: inline;
+    }
+  }
+}
