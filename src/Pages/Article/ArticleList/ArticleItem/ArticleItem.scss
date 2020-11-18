@@ -1,0 +1,22 @@
+@import "../../../../App.scss";
+
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+
+  .image {
+    display: inline;
+    height: 200px;
+    width: 300px;
+  }
+
+  .text-container {
+    margin-left: 10px;
+
+    .title {
+      font-weight: bold;
+    }
+
+  }
+}

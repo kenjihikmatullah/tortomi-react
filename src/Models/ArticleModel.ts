@@ -1,14 +1,25 @@
 import Model from "./Model";
 
-export default class ArticleModel extends Model {
-  name?: string;
-  body?: string;
+interface Props {
+  id?: number,
+  title?: string,
+  body?: string,
+  imageUrl?: string
+}
 
-  constructor(params: { id?: number, name?: string, body?: string }) {
-    const { id, name, body } = params;
+export default class ArticleModel extends Model {
+  title?: string;
+  body?: string;
+  outline?: string;
+  imageUrl?: string;
+
+  constructor(params: Props) {
+    const { id, title, body, imageUrl } = params;
 
     super({ id: id });
-    this.name = name;
+
+    this.title = title;
     this.body = body;
+    this.imageUrl = imageUrl;
   }
 }

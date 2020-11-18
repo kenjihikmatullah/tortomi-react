@@ -7,9 +7,7 @@ import { mapDispatchToProps, mapStateToProps } from './Redux/Map';
 
 function App() {
   return (
-    <main>
-      <Switch />
-    </main>
+    <Switch />
   ); 
 }
 

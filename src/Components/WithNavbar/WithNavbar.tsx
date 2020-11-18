@@ -5,6 +5,7 @@ import { Navbar } from '../index';
 import './WithNavbar.scss';
 
 class WithNavbar extends React.Component<GlobalProps> {
+  
   render() {
     const { children } = this.props;
 

@@ -44,6 +44,7 @@ class Navbar extends React.Component<GlobalProps, State> {
         {
           key: '0',
           name: 'Artikel',
+          href: 'http://localhost:3000/articles'
         },
         {
           key: '1',

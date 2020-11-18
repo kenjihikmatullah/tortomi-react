@@ -8,7 +8,11 @@ interface State {
 }
 
 const initialState: State = {
-  articles: [],
+  articles: [
+    new ArticleModel({title: 'Ini Judul Artikel Yang Panjang', imageUrl: 'https://cdn.techinasia.com/wp-content/uploads/2020/11/d3-bio.jpg'}),
+    new ArticleModel({title: 'Ini Judul Artikel Yang Panjang', imageUrl: 'https://cdn.techinasia.com/wp-content/uploads/2020/11/d3-bio.jpg'}),
+    new ArticleModel({title: 'Ini Judul Artikel Yang Panjang', imageUrl: 'https://cdn.techinasia.com/wp-content/uploads/2020/11/d3-bio.jpg'}),
+  ],
   recommendedArticles: []
 };
 
