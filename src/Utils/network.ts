@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosResponse, Method } from 'axios';
 import { debug } from './debugging';
 
-const BASE_URL = 'localhost:8000';
+const BASE_URL = 'http://localhost:8000/api';
 
 const client = axios.create({
   baseURL: BASE_URL,
@@ -9,28 +9,18 @@ const client = axios.create({
   headers: { 'X-Custom-Header': 'foobar' },
 });
 
-export interface SuccessfulResponse<T> {
-  message: string;
-  data: T;
-}
-
-export interface FailedResponse {
-  code: number;
-  message: string;
-}
-
 interface Params<D, R> {
   method: Method,
   endpoint: string,
   data?: D;
-  onSucceed?: (response: SuccessfulResponse<R>) => void;
-  onFailed?: (response: FailedResponse) => void;
+  onSucceed?: (response: R) => void;
+  onFailed?: (response: AxiosResponse | AxiosError) => void;
 }
 
 export const sendRequest = <D, R>(params: Params<D, R>) => {
   const { method, endpoint, data, onSucceed, onFailed } = params;
 
-  axios.request<D, AxiosResponse<SuccessfulResponse<R>>>({
+  client.request<D, AxiosResponse<R>>({
     method: method,
     url: `${BASE_URL}/${endpoint}`,
     data: data
@@ -44,21 +34,15 @@ export const sendRequest = <D, R>(params: Params<D, R>) => {
         if (onSucceed) onSucceed(response.data);
 
       } else {
-        if (onFailed) onFailed({
-          code: response.status,
-          message: response.data.message
-        });
+        if (onFailed) onFailed(response);
       }
     })
 
     // Fail
-    .catch((response: AxiosError<FailedResponse>) => {
+    .catch((response: AxiosError) => {
       debug(response);
 
-      if (onFailed) onFailed({
-        code: parseInt(response.code ?? "500"),
-        message: response.message
-      });
+      if (onFailed) onFailed(response);
     });
 }
 
