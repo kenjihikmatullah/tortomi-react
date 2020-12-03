@@ -4,22 +4,25 @@ interface Props {
   id?: number,
   title?: string,
   body?: string,
-  imageUrl?: string
+  image?: string
+  views?: number
 }
 
 export default class ArticleModel extends Model {
   title?: string;
   body?: string;
   outline?: string;
-  imageUrl?: string;
+  image?: string;
+  views?: number;
 
   constructor(params: Props) {
-    const { id, title, body, imageUrl } = params;
+    const { id, title, body, image, views } = params;
 
     super({ id: id });
 
     this.title = title;
     this.body = body;
-    this.imageUrl = imageUrl;
+    this.image = image;
+    this.views = views;
   }
 }
