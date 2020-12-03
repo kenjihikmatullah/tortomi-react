@@ -1,14 +1,18 @@
-import { Props, ReactNode } from "react";
+import { ReactNode } from "react";
 import { bindActionCreators, Dispatch } from "redux";
 import { AppState } from "./Reducers";
+import { storeArticles, selectArticle } from "./Actions/ArticleAction";
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
-
+  // Article
+  storeArticles,
+  selectArticle
 }, dispatch);
 
 const mapStateToProps = (state: AppState) => {
   return {
-    articles: state.ARTICLE.articles
+    articles: state.ARTICLE.articles,
+    selectedArticle: state.ARTICLE.selectedArticle
   };
 }
 
