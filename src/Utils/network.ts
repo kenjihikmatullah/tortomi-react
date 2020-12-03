@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosResponse, Method } from 'axios';
 import { debug } from './debugging';
+import { camelize } from './string';
 
 const BASE_URL = 'http://localhost:8000/api';
 
@@ -20,10 +21,10 @@ interface Params<D, R> {
 export const sendRequest = <D, R>(params: Params<D, R>) => {
   const { method, endpoint, data, onSucceed, onFailed } = params;
 
-  client.request<D, AxiosResponse<R>>({
+  client.request<D, AxiosResponse>({
     method: method,
     url: `${BASE_URL}/${endpoint}`,
-    data: data
+    data: data,
   })
 
     // Succeed
@@ -31,7 +32,7 @@ export const sendRequest = <D, R>(params: Params<D, R>) => {
       debug(response);
 
       if (response.status == 200) {
-        if (onSucceed) onSucceed(response.data);
+        if (onSucceed) onSucceed(response.data)
 
       } else {
         if (onFailed) onFailed(response);

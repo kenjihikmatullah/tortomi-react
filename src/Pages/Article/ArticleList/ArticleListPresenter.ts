@@ -1,13 +1,11 @@
-import { ArticleModel } from "../../../Models";
-import { GlobalProps } from "../../../Redux/Map";
-import GetArticlesResponse from "../../../Responses/GetArticlesResponse";
-import { sendRequest } from "../../../Utils/network";
-import Presenter from "../../Presenter";
+import { GlobalProps } from "Redux/Map";
+import { GetArticlesResponse } from "Responses/ArticleResponses";
+import { sendRequest } from "Utils/network";
+import Presenter from "Pages/Presenter";
+import { ArticleModel } from "Models";
+import { useHistory } from 'react-router-dom';
 
 class ArticleListPresenter extends Presenter {
-  constructor(props: GlobalProps) {
-    super(props);
-  }
 
   getArticles = async () => {
     const { storeArticles } = this.props;
@@ -16,20 +14,15 @@ class ArticleListPresenter extends Presenter {
       method: 'GET',
       endpoint: 'articles',
       onSucceed: response => {
-        const articles = response.articles.map(a => {
-          return new ArticleModel({
-            id: a.id,
-            title: a.title,
-            image: a.image,
-            views: a.views
-          });
-        });
-
-        storeArticles(articles);
-      },
-      onFailed: response => {
-        // TODO
+        storeArticles(response.articles);
       }
+    });
+  }
+
+  read = async (id?: number) => {
+    sendRequest<any, any>({
+      method: 'POST',
+      endpoint: `articles/${id}/read`,
     });
   }
 }

@@ -5,15 +5,16 @@ import './ArticleItem.scss';
 
 interface Props {
   article?: ArticleModel;
+  onSelect: () => void; 
 }
 
 class ArticleItem extends React.Component<Props> {
 
   render() {
-    const { article } = this.props;
+    const { article, onSelect } = this.props;
 
     return (
-      <div className='container'>
+      <div className='container' onClick={onSelect}>
 
         {/* Image */}
         <img

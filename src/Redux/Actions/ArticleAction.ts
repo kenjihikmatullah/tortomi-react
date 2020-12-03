@@ -4,7 +4,6 @@ import Action from "./Action";
 
 interface ArticleAction extends Action {
   articles?: ArticleModel[];
-  article?: ArticleModel;
 }
 
 function storeArticles(articles: ArticleModel[]): ArticleAction {
@@ -14,15 +13,7 @@ function storeArticles(articles: ArticleModel[]): ArticleAction {
   };
 }
 
-function selectArticle(article: ArticleModel): ArticleAction {
-  return {
-    type: ActionType.SELECT_ARTICLE,
-    article: article
-  };
-}
-
 export {
-  storeArticles,
-  selectArticle
+  storeArticles
 };
 export type { ArticleAction };
