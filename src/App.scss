@@ -4,6 +4,10 @@ $text-primary: black;
 // Breakpoints
 $breakpoint-tablet: 768px;
 
+// Paddings
+$horizontal-padding-sm: 16px;
+$horizontal-padding-md: 25px;
+
 // Mixins
 @mixin min-md {
   @media (min-width: #{$breakpoint-tablet}) {

@@ -1,22 +1,43 @@
-@import "../../../../App.scss";
+@import "App.scss";
 
 .container {
   display: flex;
   flex: 1;
   flex-direction: row;
+  padding-left: $horizontal_padding_sm;
+  padding-right: $horizontal_padding_sm;
 
-  .image {
-    display: inline;
-    height: 200px;
-    width: 300px;
+  @include min-md {
+  }
+
+  .image-container {
+    width: 30%;
+
+    @include min-md {
+      height: 200px;
+      width: 300px;
+    }
+
+    .image {
+      display: inline;
+      // object-fit: contain;
+      width: 100%;
+    }
   }
 
   .text-container {
-    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
 
     .title {
-      font-weight: bold;
+      font-size: 16px;
+      font-weight: 600;
     }
 
+    .meta-data {
+      font-size: 10px;
+      font-weight: 300;
+    }
   }
 }

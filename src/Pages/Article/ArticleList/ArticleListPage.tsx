@@ -6,16 +6,21 @@ import { GlobalProps, mapDispatchToProps, mapStateToProps } from "Redux/Map";
 import ArticleItem from "./ArticleItem/ArticleItem";
 import { default as Presenter } from "./ArticleListPresenter";
 import { useHistory } from "react-router-dom";
+import './ArticleListPage.scss';
 
 const ArticleListPage: FunctionComponent<GlobalProps> = (props: GlobalProps) => {
   const presenter = new Presenter(props);
-  presenter.getArticles();
   const { articles } = props;
   const history = useHistory();
+
+  if (articles.length == 0) {
+    presenter.getArticles();
+  }
 
   return (
     <WithNavbar>
       <List
+        className='list'
         items={articles}
         onRenderCell={(article, index) => {
           return (
