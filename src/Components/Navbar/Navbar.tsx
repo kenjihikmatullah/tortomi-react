@@ -1,30 +1,21 @@
-import './Navbar.scss';
-import React from 'react';
 // import { IconButton } from '@fluentui/react/lib/Button';
-import { IButtonStyles, Layer, Text, FontWeights, Panel, List, CommandBar, ICommandBarItemProps } from '@fluentui/react';
-import { useBoolean } from '@uifabric/react-hooks';
-import { mergeStyles, AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
-import { Nav, INavLink, INavStyles, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
-
-import { fade, makeStyles, withStyles } from "@material-ui/core/styles";
+import { CommandBar, ICommandBarItemProps, Text } from '@fluentui/react';
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
+import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
+import MenuItem from "@material-ui/core/MenuItem";
+import Toolbar from "@material-ui/core/Toolbar";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import { GlobalProps, mapDispatchToProps, mapStateToProps } from '../../Redux/Map';
-import { MenuModel } from '../../Models';
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import React from 'react';
 import { connect } from 'react-redux';
+import { BASE_URL } from 'Utils/constants';
+import { GlobalProps, mapDispatchToProps, mapStateToProps } from 'Redux/Map';
+import './Navbar.scss';
+
 
 interface State {
   anchorEl?: any;
@@ -44,11 +35,16 @@ class Navbar extends React.Component<GlobalProps, State> {
         {
           key: '0',
           name: 'Artikel',
-          href: 'http://localhost:3000/articles'
+          href: `${BASE_URL}/articles`
         },
         {
           key: '1',
           name: 'Perawatan',
+        },
+        {
+          key: '2',
+          name: 'Tentang Kami',
+          href: `${BASE_URL}/about-us`
         }
       ]
     };

@@ -4,10 +4,13 @@ import {
   // Home
   HomePage,
 
+  // About
+  AboutUsPage,
+
   // Article
   ArticleListPage,
   ArticleDetailPage 
-} from '../Pages';
+} from 'Pages';
 
 class Switch extends React.Component {
   render() {
@@ -16,6 +19,7 @@ class Switch extends React.Component {
         <Route exact path={HomePage.route} component={HomePage} />
         <Route exact path='/articles' component={ArticleListPage} />
         <Route path='/articles/:id' component={ArticleDetailPage} />
+        <Route exact path='/about-us' component={AboutUsPage} />
       </ReactSwitch>
     );
   }

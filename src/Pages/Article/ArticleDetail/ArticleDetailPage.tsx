@@ -1,5 +1,4 @@
-import { List } from "@fluentui/react";
-import React, { useState } from "react";
+import React, { useState, FunctionComponent as Component } from "react";
 import { connect } from "react-redux";
 import { WithNavbar } from 'Components';
 import { GlobalProps, mapDispatchToProps, mapStateToProps } from "Redux/Map";
@@ -14,7 +13,7 @@ interface Params {
   id?: string;
 }
 
-const ArticleDetailPage: React.FC<GlobalProps> = (props: GlobalProps) => {
+const ArticleDetailPage: Component<GlobalProps> = (props: GlobalProps) => {
   const [article, setArticle] = useState<ArticleModel | undefined>();
   const { id } = useParams<Params>();
   const presenter = new Presenter(props);
@@ -26,7 +25,7 @@ const ArticleDetailPage: React.FC<GlobalProps> = (props: GlobalProps) => {
 
   return (
     <WithNavbar>
-      <main className='main'>
+      <main>
         {/* Title */}
         <Text className='title'>
           {article?.title}
