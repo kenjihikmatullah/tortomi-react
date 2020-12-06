@@ -1,20 +1,15 @@
 @import "App.scss";
 
-.container {
+.row {
   display: flex;
   flex: 1;
   flex-direction: row;
-  padding-left: $horizontal_padding_sm;
-  padding-right: $horizontal_padding_sm;
-
-  @include min-md {
-  }
 
   .image-container {
     width: 30%;
 
     @include min-md {
-      height: 200px;
+      height: 168.75px;
       width: 300px;
     }
 
@@ -31,11 +26,18 @@
     margin-left: 12px;
 
     .title {
+      color: $text-primary;
       font-size: 16px;
       font-weight: 600;
+
+      @include min-md {
+        font-size: 20px;
+        font-weight: 700;
+      }
     }
 
     .meta-data {
+      color: $text-primary;
       font-size: 10px;
       font-weight: 300;
     }

@@ -1,0 +1,47 @@
+@import "App.scss";
+
+.main {
+  padding-top: $top-padding-sm;
+  padding-left: $horizontal-padding-sm;
+  padding-right: $horizontal-padding-sm;
+
+  @include min-md {
+    padding-top: $top-padding-md;
+    padding-bottom: 20px;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
+  .title {
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+
+    @include min-md {
+      font-size: 25px;
+    }
+  }
+
+  .meta-data {
+    font-size: 10px;
+    font-weight: 300;
+  }
+
+  .image {
+    margin-top: 12px;
+    width: 100%;
+
+    @include min-md {
+      margin-top: 16px;
+    }
+  }
+
+  .body {
+    font-size: 12px;
+    margin-top: 20px;
+
+    @include min-md {
+      font-size: 15px;
+    }
+  }
+}

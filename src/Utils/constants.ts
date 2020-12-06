@@ -1,0 +1,1 @@
+export const DEFAULT_ARTICLE_IMAGE = 'https://cdn.idntimes.com/content-images/community/2020/04/19764990-1721267444554302-6319357529188990976-n-0e8dd01aeb6b9bd0f06c7b7919a21c3e_600x400.jpg';

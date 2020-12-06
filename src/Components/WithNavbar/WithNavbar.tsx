@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { GlobalProps, mapDispatchToProps, mapStateToProps } from '../../Redux/Map';
+import { GlobalProps, mapDispatchToProps, mapStateToProps } from 'Redux/Map';
 import { Navbar } from '../index';
 import './WithNavbar.scss';
 

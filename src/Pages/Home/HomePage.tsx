@@ -23,7 +23,6 @@ class HomePage extends React.Component<GlobalProps> {
               <div style={{ marginTop: index != 0 ? 20 : 0 }}>
                 <ArticleItem
                   article={item}
-                  onSelect={() => {}}
                 />
               </div>
             );

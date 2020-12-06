@@ -6,7 +6,9 @@ import { GlobalProps, mapDispatchToProps, mapStateToProps } from "Redux/Map";
 import { default as Presenter } from "./ArticleDetailPresenter";
 import { useParams } from "react-router-dom";
 import { ArticleModel } from "Models";
-import { debug } from "Utils/debugging";
+import { Text } from "@fluentui/react";
+import './ArticleDetailPage.scss'
+import { DEFAULT_ARTICLE_IMAGE } from "Utils/constants";
 
 interface Params {
   id?: string;
@@ -15,7 +17,6 @@ interface Params {
 const ArticleDetailPage: React.FC<GlobalProps> = (props: GlobalProps) => {
   const [article, setArticle] = useState<ArticleModel | undefined>();
   const { id } = useParams<Params>();
-  debug(`id: ${id}`);
   const presenter = new Presenter(props);
 
   presenter.getArticle({
@@ -24,9 +25,32 @@ const ArticleDetailPage: React.FC<GlobalProps> = (props: GlobalProps) => {
   });
 
   return (
-    <div>
+    <WithNavbar>
+      <main className='main'>
+        {/* Title */}
+        <Text className='title'>
+          {article?.title}
+        </Text>
 
-    </div>
+        {/* Metadata */}
+        <Text className='meta-data'>
+          Dibaca {article?.views}x
+        </Text>
+
+        {/* Image */}
+        <img
+          src={article?.image ?? DEFAULT_ARTICLE_IMAGE}
+          alt={`Image of This Article`}
+          className='image'
+        />
+
+        {/* Body */}
+        <Text className='body'>
+          {article?.body}
+        </Text>
+
+      </main>
+    </WithNavbar>
   );
 }
 
