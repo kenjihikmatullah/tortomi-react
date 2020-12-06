@@ -40,6 +40,7 @@ class Navbar extends React.Component<GlobalProps, State> {
         {
           key: '1',
           name: 'Perawatan',
+          href: `${BASE_URL}/treatments`
         },
         {
           key: '2',

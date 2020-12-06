@@ -1,9 +1,6 @@
-import { GlobalProps } from "Redux/Map";
+import Presenter from "Pages/Presenter";
 import { GetArticlesResponse } from "Responses/ArticleResponses";
 import { sendRequest } from "Utils/network";
-import Presenter from "Pages/Presenter";
-import { ArticleModel } from "Models";
-import { useHistory } from 'react-router-dom';
 
 class ArticleListPresenter extends Presenter {
 

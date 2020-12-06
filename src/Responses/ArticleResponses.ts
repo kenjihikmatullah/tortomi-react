@@ -11,4 +11,4 @@ interface GetArticleResponse extends Response {
 export type {
   GetArticlesResponse,
   GetArticleResponse,
-}
+};
