@@ -1,13 +1,27 @@
 @import 'App.scss';
 
 main {
+  
+  @include min-md {
+    width: 50%;
+  }
+
   .heading {
     font-weight: bold;
     font-size: 20px;
+
+    @include min-md {
+      font-size: 25px;
+    }
   }
 
   .value {
     font-size: 12px;
     font-weight: 500;
+
+    @include min-md {
+      font-size: 15px;
+      margin-top: 15px;
+    }
   }
 }
