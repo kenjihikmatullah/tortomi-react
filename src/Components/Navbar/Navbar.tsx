@@ -1,4 +1,3 @@
-// import { IconButton } from '@fluentui/react/lib/Button';
 import { CommandBar, ICommandBarItemProps, Text } from '@fluentui/react';
 import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
@@ -10,7 +9,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import React from 'react';
+import React, { FC as Component, useState } from 'react';
 import { connect } from 'react-redux';
 import { BASE_URL } from 'Utils/constants';
 import { GlobalProps, mapDispatchToProps, mapStateToProps } from 'Redux/Map';
@@ -18,124 +17,86 @@ import './Navbar.scss';
 
 
 interface State {
-  anchorEl?: any;
   mobileAnchorEl?: any;
   menus: ICommandBarItemProps[];
 }
 
-class Navbar extends React.Component<GlobalProps, State> {
+const Navbar: Component<GlobalProps> = (props: GlobalProps) => {
+  const [mobileAnchorEl, setMobileAnchorEl] = useState<any>(false);
+  const menus = [
+    {
+      key: '0',
+      name: 'Artikel',
+      href: `${BASE_URL}/articles`,
+      path: '/articles'
+    },
+    {
+      key: '1',
+      name: 'Perawatan',
+      href: `${BASE_URL}/treatments`,
+      path: '/treatments'
+    },
+    {
+      key: '2',
+      name: 'Tentang Kami',
+      href: `${BASE_URL}/about-us`,
+      path: 'about-us'
+    }
+  ]
 
-  constructor(props: GlobalProps) {
-    super(props);
+  return (
+    <nav>
 
-    this.state = {
-      anchorEl: false,
-      mobileAnchorEl: false,
-      menus: [
-        {
-          key: '0',
-          name: 'Artikel',
-          href: `${BASE_URL}/articles`
-        },
-        {
-          key: '1',
-          name: 'Perawatan',
-          href: `${BASE_URL}/treatments`
-        },
-        {
-          key: '2',
-          name: 'Tentang Kami',
-          href: `${BASE_URL}/about-us`
-        }
-      ]
-    };
-  }
+      <AppBar className='app-bar' position="static">
+        <Toolbar className='toolbar'>
 
-  render() {
-    const { anchorEl, mobileAnchorEl, menus } = this.state;
-
-    return (
-      <nav>
-
-        <AppBar className='app-bar' position="static">
-          <Toolbar className='toolbar'>
-
-            <Text className='title' nowrap>
-              Tortomi
+          <Text className='title'>
+            Tortomi
             </Text>
 
-            {/* Desktop */}
-            <div className='desktop-section'>
-              <CommandBar
-                items={menus}
-              />
-            </div>
+          {/* Desktop */}
+          <div className='desktop-section'>
+            <CommandBar
+              items={menus}
+            />
+          </div>
 
-            {/* Mobile */}
-            <div className='mobile-section'>
-              <IconButton
-                aria-label="show more"
-                aria-controls={',pbo;e'}
-                aria-haspopup="true"
-                onClick={(event) => {
-                  this.setState({
-                    mobileAnchorEl: event.target
-                  });
-                }}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
-            </div>
-
-          </Toolbar>
-        </AppBar>
-
-        <Menu
-          anchorEl={mobileAnchorEl}
-          anchorOrigin={{ vertical: "top", horizontal: "right" }}
-          id={'mobile'}
-          keepMounted
-          transformOrigin={{ vertical: "top", horizontal: "right" }}
-          open={mobileAnchorEl}
-          onClose={() => {
-            this.setState({
-              mobileAnchorEl: null
-            });
-          }}
-        >
-          <MenuItem>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <p>Messages</p>
-          </MenuItem>
-          <MenuItem>
-            <IconButton aria-label="show 11 new notifications" color="inherit">
-              <Badge badgeContent={11} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <p>Notifications</p>
-          </MenuItem>
-          <MenuItem>
+          {/* Mobile */}
+          <div className='mobile-section'>
             <IconButton
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
+              color="primary"
+              aria-label="show more"
+              aria-controls={',pbo;e'}
               aria-haspopup="true"
-              color="inherit"
+              onClick={(event) => setMobileAnchorEl(event.target)}
             >
-              <AccountCircle />
+              <MoreIcon />
             </IconButton>
-            <p>Profile</p>
-          </MenuItem>
-        </Menu>
+          </div>
 
-      </nav>
-    );
-  }
+        </Toolbar>
+      </AppBar>
+
+      <Menu
+        anchorEl={mobileAnchorEl}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        id={'mobile'}
+        keepMounted
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        open={mobileAnchorEl}
+        onClose={() => setMobileAnchorEl(null)}
+      >
+        {menus.map((m) => {
+          return (
+            <MenuItem onClick={() => window.location.href=m.href}>
+              <Text>{m.name}</Text>
+            </MenuItem>
+          );
+        })}
+      </Menu>
+
+    </nav>
+  );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

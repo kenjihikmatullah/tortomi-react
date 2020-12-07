@@ -10,15 +10,15 @@
 
   .title {
     color: $text-primary;
-    display: none;
+    flex: 1;
+    font-weight: bold;
 
     @include min-md {
-      display: flex;
+      flex: none;
     }
   }
 
   .mobile-section {
-    display: flex;
 
     @include min-md {
       display: none;
