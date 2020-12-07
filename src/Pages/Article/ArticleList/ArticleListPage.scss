@@ -12,6 +12,8 @@ main {
   }
 
   .list {
+    margin-top: 10px;
+
     @include min-md {
       padding: 0px;
       margin: 0px;

@@ -1,18 +1,29 @@
 @import "App.scss";
 
-.list {
+main {
   margin-top: 16px;
   padding-left: $horizontal_padding_sm;
   padding-right: $horizontal_padding_sm;
 
   @include min-md {
     padding-top: $top-padding-md;
-    padding-bottom: 20px;
     padding-left: 10%;
     padding-right: 10%; // TODO
   }
-}
 
-.item {
-  padding-top: 20px;
+  .list {
+    margin-top: 10px;
+
+    @include min-md {
+      padding: 0px;
+      margin: 0px;
+      padding-bottom: 20px;
+    }
+  }
+
+  .item {
+    @include min-md {
+      margin-top: 30px;
+    }
+  }
 }

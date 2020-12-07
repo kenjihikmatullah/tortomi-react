@@ -1,4 +1,4 @@
-import { List } from "@fluentui/react";
+import { List, Text } from "@fluentui/react";
 import React, { FunctionComponent as Component } from "react";
 import { connect } from "react-redux";
 import { WithNavbar } from 'Components';
@@ -20,23 +20,29 @@ const TreatmentListPage: Component<GlobalProps> = (props: GlobalProps) => {
 
   return (
     <WithNavbar>
-      <List
-        className='list'
-        items={treatments}
-        onRenderCell={(treatment, index) => {
-          return (
-            <div className='item'>
-              <Link
-                to={`/treatments/${treatment?.id}`}
-                onClick={() => presenter.read(treatment?.id)}>
-                <TreatmentItem
-                  treatment={treatment}
-                />
-              </Link>
-            </div>
-          );
-        }}
-      />
+      <main>
+        <Text variant={'xLarge'} nowrap>
+          Perawatan Kura-Kura
+        </Text>
+
+        <List
+          className='list'
+          items={treatments}
+          onRenderCell={(treatment, index) => {
+            return (
+              <div className='item'>
+                <Link
+                  to={`/treatments/${treatment?.id}`}
+                  onClick={() => presenter.read(treatment?.id)}>
+                  <TreatmentItem
+                    treatment={treatment}
+                  />
+                </Link>
+              </div>
+            );
+          }}
+        />
+      </main>
     </WithNavbar>
   );
 }
