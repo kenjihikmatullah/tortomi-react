@@ -1,6 +1,6 @@
 import { Route, Switch as ReactSwitch } from 'react-router-dom';
 import * as React from "react";
-import { 
+import {
   // Home
   HomePage,
 
@@ -9,10 +9,11 @@ import {
 
   // Article
   ArticleListPage,
-  ArticleDetailPage, 
+  ArticleDetailPage,
 
   // Treatment
   TreatmentListPage,
+  TreatmentDetailPage
 } from 'Pages';
 
 class Switch extends React.Component {
@@ -24,6 +25,7 @@ class Switch extends React.Component {
         <Route path='/articles/:id' component={ArticleDetailPage} />
         <Route exact path='/about-us' component={AboutUsPage} />
         <Route exact path='/treatments' component={TreatmentListPage} />
+        <Route path='/treatments/:id' component={TreatmentDetailPage} />
       </ReactSwitch>
     );
   }

@@ -2,26 +2,26 @@ import React, { useState, FunctionComponent as Component } from "react";
 import { connect } from "react-redux";
 import { WithNavbar } from 'Components';
 import { GlobalProps, mapDispatchToProps, mapStateToProps } from "Redux/Map";
-import { default as Presenter } from "./ArticleDetailPresenter";
+import { default as Presenter } from "./TreatmentDetailPresenter";
 import { useParams } from "react-router-dom";
-import { ArticleModel } from "Models";
+import { TreatmentModel } from "Models";
 import { Text } from "@fluentui/react";
-import './ArticleDetailPage.scss'
+import './TreatmentDetailPage.scss'
 import { DEFAULT_ARTICLE_IMAGE } from "Utils/constants";
 
 interface Params {
   id?: string;
 }
 
-const ArticleDetailPage: Component<GlobalProps> = (props: GlobalProps) => {
-  const [article, setArticle] = useState<ArticleModel | undefined>();
+const TreatmentDetailPage: Component<GlobalProps> = (props: GlobalProps) => {
+  const [treatment, setTreatment] = useState<TreatmentModel | undefined>();
   const { id } = useParams<Params>();
   const presenter = new Presenter(props);
 
-  if (!article) {
-    presenter.getArticle({
+  if (!treatment) {
+    presenter.getTreatment({
       id: id,
-      onSucceed: newArticle => setArticle(newArticle)
+      onSucceed: newTreatment => setTreatment(newTreatment)
     });
   }
 
@@ -30,24 +30,24 @@ const ArticleDetailPage: Component<GlobalProps> = (props: GlobalProps) => {
       <main>
         {/* Title */}
         <Text className='title'>
-          {article?.title}
+          {treatment?.title}
         </Text>
 
         {/* Metadata */}
         <Text className='meta-data'>
-          Dibaca {article?.views}x
+          Dibaca {treatment?.views}x
         </Text>
 
         {/* Image */}
         <img
-          src={article?.image ?? DEFAULT_ARTICLE_IMAGE}
-          alt={`Image of This Article`}
+          src={treatment?.image ?? DEFAULT_ARTICLE_IMAGE}
+          alt={`Image of This Treatment`}
           className='image'
         />
 
         {/* Body */}
         <Text className='body'>
-          {article?.body}
+          {treatment?.body}
         </Text>
 
       </main>
@@ -56,5 +56,5 @@ const ArticleDetailPage: Component<GlobalProps> = (props: GlobalProps) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  ArticleDetailPage
+  TreatmentDetailPage
 );

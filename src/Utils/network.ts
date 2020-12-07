@@ -6,7 +6,7 @@ const BASE_URL = 'http://localhost:8000/api';
 
 const client = axios.create({
   baseURL: BASE_URL,
-  timeout: 5000,
+  // timeout: 5000,
   headers: { 'X-Custom-Header': 'foobar' },
 });
 
@@ -31,7 +31,7 @@ export const sendRequest = <D, R>(params: Params<D, R>) => {
     .then(response => {
       debug(response);
 
-      if (response.status == 200) {
+      if (response.status === 200) {
         if (onSucceed) onSucceed(response.data)
 
       } else {
