@@ -12,6 +12,8 @@ const TreatmentListPage: Component<GlobalProps> = (props: GlobalProps) => {
   const presenter = new Presenter(props);
   const { treatments } = props;
 
+  document.title = 'Perawatan Kura-Kura';
+
   if (treatments.length == 0) {
     presenter.getTreatments();
   }

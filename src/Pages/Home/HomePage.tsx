@@ -11,6 +11,8 @@ class HomePage extends React.Component<GlobalProps> {
   render() {
     const { articles } = this.props;
 
+    document.title = 'Tortomi - Artikel dan Tips Mengobati Kura-Kura';
+
     return (
       <WithNavbar>
 

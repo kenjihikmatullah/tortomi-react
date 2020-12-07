@@ -7,6 +7,8 @@ import { DEFAULT_ARTICLE_IMAGE } from "Utils/constants";
 import './AboutUsPage.scss';
 
 const AboutUsPage: Component<GlobalProps> = (props: GlobalProps) => {
+  document.title = 'Tentang Tortomi';
+
   return (
     <WithNavbar>
       <main>

@@ -1,5 +1,5 @@
 import { List } from "@fluentui/react";
-import React, { FunctionComponent as Component } from "react";
+import React, { FunctionComponent as Component, useEffect } from "react";
 import { connect } from "react-redux";
 import { WithNavbar } from 'Components';
 import { GlobalProps, mapDispatchToProps, mapStateToProps } from "Redux/Map";
@@ -11,6 +11,8 @@ import './ArticleListPage.scss';
 const ArticleListPage: Component<GlobalProps> = (props: GlobalProps) => {
   const presenter = new Presenter(props);
   const { articles } = props;
+
+  document.title = 'Artikel Tentang Kura-Kura';
 
   if (articles.length == 0) {
     presenter.getArticles();
