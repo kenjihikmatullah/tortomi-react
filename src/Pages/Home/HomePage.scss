@@ -1,0 +1,20 @@
+@import "App.scss";
+
+.list {
+  margin-top: 10px;
+
+  @include min-md {
+    padding: 0px;
+    margin: 0px;
+    padding-bottom: 20px;
+    margin-top: 0px;
+  }
+}
+
+.treatments {
+ padding-top: 16px;
+
+  @include min-md {
+    padding-top: 25px;
+  }
+}

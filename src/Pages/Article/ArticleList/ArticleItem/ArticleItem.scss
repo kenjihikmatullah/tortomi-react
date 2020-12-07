@@ -5,17 +5,22 @@
   flex: 1;
   flex-direction: row;
 
+  @include min-md {
+    height: 168.75px;
+  }
+
   .image-container {
     width: 30%;
+    height: 100%;
+    overflow: hidden;
 
     @include min-md {
-      height: 168.75px;
       width: 300px;
     }
 
     .image {
       display: inline;
-      // object-fit: contain;
+      object-fit: cover;
       width: 100%;
     }
   }
