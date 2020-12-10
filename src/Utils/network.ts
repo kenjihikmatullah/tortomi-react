@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosResponse, Method } from 'axios';
 import { debug } from './debugging';
 import { camelize } from './string';
 
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = 'http://localhost:8001/api';
 
 const client = axios.create({
   baseURL: BASE_URL,
